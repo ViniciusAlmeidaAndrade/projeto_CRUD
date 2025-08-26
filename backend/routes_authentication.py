@@ -1,15 +1,20 @@
 from fastapi import APIRouter, Depends, HTTPException
 from models import User
-from dependencies import pegar_sessao
-from main import bcrypt_context
+from dependencies import pegar_sessao, verificar_token
+from main import bcrypt_context, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from schemas import UserSchema, LoginSchema
 from sqlalchemy.orm import Session
+from jose import jwt, JWTError
+from datetime import datetime, timedelta, timezone
 
 routes_authentication = APIRouter(prefix="/autenticacao", tags=["autenticacao"])
 
-def criar_token(id_users):
-    token = f"cweiqw0eico2{id_users}"
-    return token
+def criar_token(id_users, duracao_token=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)):
+    data_expiracao = datetime.now(timezone.utc) + duracao_token
+    dic_info= {"sub": id_users, "exp": data_expiracao}
+    jwt_codificado = jwt.encode(dic_info, SECRET_KEY, ALGORITHM)
+    return jwt_codificado
+
 
 def autenticar_usuario(email, password, session):
     users = session.query(User).filter(User.email == email).first()
@@ -47,7 +52,13 @@ async def login(login_schema: LoginSchema, session: Session = Depends(pegar_sess
         raise HTTPException(status_code = 400, detail = "Usuário não encontrado ou E-mail e senha incorretos")
     else:
         access_token = criar_token(users.id)
-        return {
-            "access_token": access_token,
-            "token_type": "bearer"
-            }
+        refresh_token = criar_token(users.id, duracao_token=timedelta(days=7))
+
+
+@routes_authentication.get("/refresh")
+async def use_refresh_token(user: User = Depends(verificar_token)):
+    access_token = criar_token(user.id)
+    return {
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
