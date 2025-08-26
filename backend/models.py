@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, String, Integer, Text, DateTime
+from sqlalchemy import create_engine, Column, String, Integer, Text, DateTime, Boolean
 from sqlalchemy.orm import declarative_base
 import datetime
 
@@ -20,3 +20,19 @@ class Project(Base):
         self.description = description
         self.status = status
 
+class User(Base):
+    __tablename__ = "user"
+
+    id = Column("id", Integer, primary_key = True, autoincrement = True)
+    name = Column("nome", String)
+    email = Column("email", String, nullable = False)
+    password = Column("senha", String)
+    active = Column("active", Boolean)
+    admin = Column("admin", Boolean, default = False)
+
+    def __init__(self, name, email, password, active = True, admin = False):
+        self.name = name
+        self.email = email
+        self.password = password
+        self.active = active
+        self.admin = admin
