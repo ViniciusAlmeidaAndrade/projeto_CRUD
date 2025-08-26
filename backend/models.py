@@ -24,9 +24,9 @@ class User(Base):
     __tablename__ = "user"
 
     id = Column("id", Integer, primary_key = True, autoincrement = True)
-    name = Column("nome", String)
+    name = Column("name", String)
     email = Column("email", String, nullable = False)
-    password = Column("senha", String)
+    password = Column("password", String)
     active = Column("active", Boolean)
     admin = Column("admin", Boolean, default = False)
 
