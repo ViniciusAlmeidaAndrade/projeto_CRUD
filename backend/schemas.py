@@ -1,6 +1,5 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel
 from typing import Optional
-# from enums import StatusProjeto
 
 class UserSchema (BaseModel):
     name: str

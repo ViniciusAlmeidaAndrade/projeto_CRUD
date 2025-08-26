@@ -21,7 +21,7 @@ class Project(Base):
         self.status = status
 
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = Column("id", Integer, primary_key = True, autoincrement = True)
     name = Column("name", String)

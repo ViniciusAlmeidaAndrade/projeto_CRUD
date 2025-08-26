@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from dependencies import pegar_sessao
 from schemas import NewProject
 from models import Project
-    # ProjectSchema
 
 routes_crud = APIRouter(prefix="/projects", tags=["projects"])
 
