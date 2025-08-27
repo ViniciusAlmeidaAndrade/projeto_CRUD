@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from dependencies import pegar_sessao, verificar_token
 from schemas import NewProject, UpdateProject, AllProject
-from models import Project
+from models import Project, User
 
 routes_crud = APIRouter(prefix="/projects", tags=["projects"], dependencies=[Depends(verificar_token)])
 
@@ -53,6 +53,7 @@ async def editar_projeto(id: int,update_project: UpdateProject, session:Session 
 # DELETE /projects/{id}: remove um projeto
 @routes_crud.delete("/{id}")
 async def excluir_projeto(id: int, session: Session = Depends(pegar_sessao)):
+    # user: User = Depends(verificar_token) depois de (pegar_sessao)
     projeto = session.query(Project).filter(Project.id == id).first()
     if not projeto:
         raise HTTPException(status_code=400, detail="Projeto não encontrado ")
