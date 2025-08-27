@@ -1,4 +1,3 @@
-from dns.dnssectypes import Algorithm
 from fastapi import FastAPI
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer

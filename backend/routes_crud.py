@@ -1,15 +1,18 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from dependencies import pegar_sessao, verificar_token
-from schemas import NewProject,  UpdateProject
+from schemas import NewProject, UpdateProject, AllProject
 from models import Project
 
 routes_crud = APIRouter(prefix="/projects", tags=["projects"], dependencies=[Depends(verificar_token)])
 
 # GET /projects: lista todos os projetos
-@routes_crud.get("/")
-async def projeto():
-    todos_projetos = Project.query.all()
+@routes_crud.get("/", response_model=list[AllProject])
+async def listar_projetos(session: Session = Depends(pegar_sessao)):
+    todos_projetos = session.query(Project).all()
+    if not todos_projetos:
+        raise HTTPException(status_code=400, detail="Nenhum projeto encontrado ")
+
     return todos_projetos
 
 # GET /projects/{id}: obtém detalhes de um projeto

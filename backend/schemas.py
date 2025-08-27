@@ -16,7 +16,7 @@ class LoginSchema(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-class ProjectResponse(BaseModel):
+class AllProject(BaseModel):
     id: int
     name: str
     description: Optional[str]
