@@ -15,7 +15,7 @@ class Project(Base):
     status = Column("status", String, default="ativo") #Ex: ativo, pausado, finalizado
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
 
-    def __init__(self, name, description, status= "Ativo"):
+    def __init__(self, name, description, status= "ativo"):
         self.name = name
         self.description = description
         self.status = status

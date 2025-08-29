@@ -3,6 +3,8 @@ from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
 from dotenv import load_dotenv
 import os
+from fastapi.middleware.cors import CORSMiddleware
+
 
 load_dotenv()
 
@@ -19,3 +21,11 @@ from routes_crud import routes_crud
 
 app.include_router(routes_authentication)
 app.include_router(routes_crud )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Permite todas as origens (para desenvolvimento)
+    allow_credentials=True,
+    allow_methods=["*"], # Permite todos os métodos (GET, POST, etc.)
+    allow_headers=["*"], # Permite todos os headers
+)

@@ -1,5 +1,15 @@
 from pydantic import BaseModel, ConfigDict
 from typing import Optional
+from datetime import datetime
+
+class Project(BaseModel):
+    id: int
+    name: str
+    description: str | None = None
+    status: str
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
 
 class UserSchema (BaseModel):
     name: str
@@ -21,6 +31,7 @@ class AllProject(BaseModel):
     name: str
     description: Optional[str]
     status: str
+    created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
 
