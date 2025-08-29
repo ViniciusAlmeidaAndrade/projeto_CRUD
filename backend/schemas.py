@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict
 from typing import Optional
 from datetime import datetime
 
-class Project(BaseModel):
+class AllProject(BaseModel):
     id: int
     name: str
     description: str | None = None
@@ -26,10 +26,9 @@ class LoginSchema(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-class AllProject(BaseModel):
+class ProjectList(BaseModel):
     id: int
     name: str
-    description: Optional[str]
     status: str
     created_at: datetime
 

@@ -12,12 +12,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Status</th>
-                    <th>Criação </th>
-                    <th></th>
+                    <th scope="col">id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Criação</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody id="projects-table-body">
@@ -25,9 +24,7 @@
             <tfoot>
                 <tr>
                     <td colspan="6">
-                        <a href="form.html">
-                            <button>Criar Novo Projeto</button>
-                        </a>
+                        <button onclick="window.location.href='form.html'">Criar Novo Projeto</button>
                     </td>
                 </tr>
             </tfoot>
