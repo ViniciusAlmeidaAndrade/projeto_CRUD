@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+ul{
+    color: #333 ;
+    list-style: none;
+    padding: 2px;
+}
+
+li{
+    color: #333 ;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 1px;
+    border-radius: 2px;
+}
