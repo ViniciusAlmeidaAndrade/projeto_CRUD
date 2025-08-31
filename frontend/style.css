@@ -1,19 +1,5 @@
 @charset "utf-8";
 
-/*ul{*/
-/*    color: #333 ;*/
-/*    list-style: none;*/
-/*    padding: 2px;*/
-/*}*/
-
-/*li{*/
-/*    color: #333 ;*/
-/*    padding: 10px;*/
-/*    margin-top: 10px;*/
-/*    margin-bottom: 5px;*/
-/*    padding: 1px;*/
-/*    border-radius: 2px;*/
-/*}*/
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -31,7 +17,7 @@ div {
     max-width: 900px;
     margin: 20px auto;
     background-color: #fff;
-    padding: 20px;
+    /*padding: 50px;*/
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -76,6 +62,34 @@ td a:hover {
     text-decoration: underline;
 }
 
+.container-de-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 70%;
+    gap: 15px;
+}
+
+input.usuario, .senha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 8px;
+    width: 250px;
+}
+
+.botao-entrar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
 /* Estilo para os botões dentro da tabela */
 td button {
     padding: 6px 12px;
@@ -87,76 +101,75 @@ td button {
     transition: background-color 0.3s ease;
 }
 
-/* Botão de editar */
-td button:first-of-type {
+.button_editar {
+    display: inline-block;
     background-color: #ffc107;
-    color: #333;
-}
-
-td button:first-of-type:hover {
-    background-color: #e0a800;
-}
-
-/* Botão de excluir */
-td button:last-of-type {
-    background-color: #dc3545;
-    color: white;
-}
-
-td button:last-of-type:hover {
-    background-color: #c82333;
-}
-
-/* Estilo para o rodapé da tabela com o botão de criar */
-tfoot td {
-    text-align: right;
-    border: none;
-    padding: 15px 0;
-}
-
-tfoot button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 3px auto;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
-tfoot button:hover {
-    background-color: #218838;
+.button_editar:hover {
+    background-color: #e0a800;
+}
+.detalhes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 35vh;
+    width: 70%;
+    gap: 15px;
 }
 
-/* Opcional: responsividade para telas menores */
-@media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    tr {
-        margin: 0 0 10px 0;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-    td {
-        border: none;
-        position: relative;
-        padding-left: 50%;
-        text-align: right;
-    }
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 45%;
-        padding-left: 10px;
-        font-weight: bold;
-        text-align: left;
-    }
+.editar{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 50%;
+    max-width: 400px;
+    margin: 1px auto;
+}
+.editar label {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+
+.buttons_cancelar, .button_deletar {
+    background-color: #dc3545;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin: 3px auto;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.buttons_cancelar:hover , .button_deletar:hover{
+    background-color: #c82333;
+}
+
+tfoot button.button_criar, .buttons_ok{
+    display: inline-block;
+    background-color: #28a745;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+tfoot button.button_criar:hover, .buttons_ok:hover {
+    background-color: #218838;
 }

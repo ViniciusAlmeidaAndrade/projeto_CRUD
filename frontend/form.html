@@ -11,24 +11,22 @@
 
     <form id="project-form">
         <div>
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="description">Descrição:</label>
-            <textarea id="description" name="description"></textarea>
-        </div>
-        <div>
-            <label for="status">Status:</label>
-            <select id="status" name="status">
-                <option value="ativo">Ativo</option>
-                <option value="pausado">Pausado</option>
-                <option value="finalizado">Finalizado</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Salvar</button>
-            <button type="button" onclick="window.location.href='index.html'">Cancelar</button>
+            <div class="editar">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="description">Descrição:</label>
+                <textarea id="description" name="description"></textarea>
+            
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="ativo" selected>Ativo</option>
+                    <option value="pausado">Pausado</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+            </div>
+            <button type="submit" class="buttons_ok">Salvar</button>
+            <button type="button" onclick="window.location.href='index.html'" class="buttons_cancelar">Cancelar</button>
         </div>
     </form>
     <script src="script.js"></script>

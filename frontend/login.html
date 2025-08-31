@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet", href="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Login</title>
 </head>
 <body>
     <h1>Login</h1>
-    <form id="login-form">
-        <input type="text" id="email" placeholder="Usuário">
-        <input type="password" id="password" placeholder="Senha">
-        <button type="submit">Entrar</button>
-    </form>
-    <p id="login-msg"></p>
 
+    <form id="login-form">
+        <div class="container-de-login">
+            <input type="text" id="email" placeholder="Usuário" class="usuario">
+            <input type="password" id="password" placeholder="Senha" class="senha">
+            <button type="submit" class="buttons_ok">Entrar</button>
+        </div>
+    </form>
+
+    <p id="login-msg"></p>
     <script src="script.js"></script>
 </body>
 </html>

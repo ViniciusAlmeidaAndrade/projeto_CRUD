@@ -109,8 +109,8 @@ async function listProjects() {
                 <td>${project.status}</td>
                 <td>${formattedDate}</td>
                 <td>
-                    <a href="form.html?id=${project.id}"><button>Editar</button></a>
-                    <button class="delete-button" data-id="${project.id}">Excluir</button>
+                    <a class="button_editar" href="form.html?id=${project.id}">Editar</a>
+                    <button class="button_deletar" data-id="${project.id}">Excluir</button>
                 </td>
             `;
             tableBody.appendChild(row);
@@ -264,7 +264,7 @@ if (projectTableBody) {
     listProjects();
 
     projectTableBody.addEventListener("click", (event) => {
-        if (event.target.classList.contains("delete-button")) {
+        if (event.target.classList.contains("button_deletar")) {
             const projectId = event.target.getAttribute("data-id");
             deleteProject(projectId);
         }
