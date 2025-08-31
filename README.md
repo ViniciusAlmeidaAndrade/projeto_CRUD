@@ -4,6 +4,18 @@ Esse projeto é um CRUD para projetos feito em **FastAPI**.
 A aplicação permite que o usuário adicione projetos, liste todos os que estão no banco de dados, edite projetos existentes e remova-os.  
 
 ---
+## Autenticação
+
+O sistema utiliza autenticação via JWT. Para acessar as rotas protegidas do CRUD de projetos, é necessário realizar login.
+
+Para testes, um usuário padrão já pode ser usado:
+
+- Email: admin@exemplo.com
+- Senha: admin
+
+O token gerado no login deve ser salvo no localStorage pelo frontend, permitindo o acesso às páginas protegidas.
+
+---
 
 ## Como Rodar o Projeto
 
@@ -100,8 +112,23 @@ Lá você encontrará a documentação interativa da API (Swagger UI), onde é p
 
 ---
 
+### 6. Login no Frontend
+
+Para acessar as funcionalidades do CRUD via frontend, siga os passos:
+
+1. Abra `login.html`.
+2. Insira o email e senha do usuário.
+3. Ao logar, um token será armazenado no localStorage.
+4. Com o token válido, você poderá:
+   - Listar projetos (`index.html`)
+   - Visualizar detalhes (`detalhes.html`)
+   - Criar/editar projetos (`form.html`)
+   - Excluir projetos diretamente da tabela
+
 ## 📌 Observações
 
 - O backend só funcionará se o PostgreSQL estiver rodando e o banco tiver sido criado.  
 - Certifique-se de ativar o ambiente virtual sempre que for iniciar o backend.  
 - As migrations já estão configuradas no projeto, então basta rodar `alembic upgrade head` para criar/atualizar as tabelas.
+- Se o token expirar ou for inválido, o usuário será redirecionado para a página de login.
+- Todas as rotas do CRUD requerem autenticação, então é necessário logar antes de acessar qualquer funcionalidade.

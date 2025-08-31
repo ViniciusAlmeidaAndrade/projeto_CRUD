@@ -24,8 +24,8 @@ app.include_router(routes_crud )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Permite todas as origens (para desenvolvimento)
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"], # Permite todos os métodos (GET, POST, etc.)
-    allow_headers=["*"], # Permite todos os headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )

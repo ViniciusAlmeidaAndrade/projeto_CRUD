@@ -5,8 +5,7 @@ from dependencies import pegar_sessao, verificar_token
 from schemas import NewProject, UpdateProject, ProjectList, AllProject
 from models import Project, User
 
-routes_crud = APIRouter(prefix="/projects", tags=["projects"])
-# , dependencies=[Depends(verificar_token)]
+routes_crud = APIRouter(prefix="/projects", tags=["projects"], dependencies=[Depends(verificar_token)])
 
 # GET /projects: lista todos os projetos
 @routes_crud.get("/", response_model=list[ProjectList])
